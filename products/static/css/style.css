@@ -1,0 +1,25 @@
+body {
+    /* background: whitesmoke; */
+    background-image: url(../assets/pink_rice.png);
+
+}
+#app {
+    background: white;
+    padding: 30px;
+    margin: 30px auto;
+    -webkit-box-shadow: 1px 1px 2px 0px rgba(224,224,224,1);
+    -moz-box-shadow: 1px 1px 2px 0px rgba(224,224,224,1);
+    box-shadow: 1px 1px 2px 0px rgba(224,224,224,1);
+    border-radius: 4px;
+}
+
+.nav-color{ 
+    color: white;
+    background-color: rgba(109, 26, 79, 0.842);
+}
+
+.table-color{
+    color: white;
+    background-color: rgba(109, 26, 79, 0.842);
+}
+.top-buffer { margin-top:20px; }
