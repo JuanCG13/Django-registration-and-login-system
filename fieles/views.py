@@ -17,18 +17,18 @@ class DataDetail(DetailView):
 class DataCreate(SuccessMessageMixin, CreateView): 
     model = Fieles
     form_class = DataForm
-    success_url = reverse_lazy('fieles_list')
+    success_url = reverse_lazy('data_list')
     success_message = "Data successfully created!"
 
 class DataUpdate(SuccessMessageMixin, UpdateView): 
     model = Fieles
     form_class = DataForm
-    success_url = reverse_lazy('fieles_list')
+    success_url = reverse_lazy('data_list')
     success_message = "Data successfully updated!"
 
 class DataDelete(SuccessMessageMixin, DeleteView):
     model = Fieles
-    success_url = reverse_lazy('fieles_list')
+    success_url = reverse_lazy('data_list')
     success_message = "Data successfully deleted!"
 
 

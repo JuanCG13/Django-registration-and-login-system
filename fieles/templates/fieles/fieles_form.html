@@ -17,7 +17,7 @@
                 {% endfor %}
 
                 <input type="submit" {% if request.path == '/fieles/new' %} value="Add" {% else %} value="Update" {% endif %} class="btn btn-success"/>
-                <a href="{% url 'fieles_list' %}"><button type="button" class="btn btn-secondary">Back</button></a>
+                <a href="{% url 'data_list' %}"><button type="button" class="btn btn-secondary">Back</button></a>
             </form>
         </div>
     </div>
