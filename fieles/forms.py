@@ -1,18 +1,18 @@
 # -*- coding: utf-8 -*-
 from django import forms
 
-from .models import Product
+from .models import *
 
 class DateInput(forms.DateInput):
     input_type = 'date'
 
-class ProductForm(forms.ModelForm):
+class DataForm(forms.ModelForm):
 
     input_choices = (('option 1', 'option 1'),('option 3', 'option 2'),('option 4', 'option 4'))
     name = forms.ChoiceField(choices=input_choices)
 
     def __init__(self, *args, **kwargs):
-        super(ProductForm, self).__init__(*args, **kwargs)
+        super(DataForm, self).__init__(*args, **kwargs)
         self.fields['name'].widget.attrs = {
             'class': 'form-control col-md-6'
         }
@@ -33,7 +33,7 @@ class ProductForm(forms.ModelForm):
 
     class Meta:
 
-        model = Product
+        model = Fieles
 
         fields = "__all__"
 

@@ -13,13 +13,4 @@ body {
     border-radius: 4px;
 }
 
-.nav-color{ 
-    color: white;
-    background-color: rgba(109, 26, 79, 0.842);
-}
-
-.table-color{
-    color: white;
-    background-color: rgba(109, 26, 79, 0.842);
-}
 .top-buffer { margin-top:20px; }

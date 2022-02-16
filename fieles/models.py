@@ -3,7 +3,7 @@ from django.db import models
 from django.urls import reverse
 import datetime
 
-class Product(models.Model):
+class Fieles(models.Model):
     name = models.CharField('Name', max_length=100)
     description = models.TextField('Description', blank=True)
     assText = models.TextField('Asstext', blank=True)

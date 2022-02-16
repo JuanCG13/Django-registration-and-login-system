@@ -11,3 +11,4 @@ env/
 profile_images/
 
 .idea/
+migrations/

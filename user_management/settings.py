@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'users.apps.UserConfig',
     'social_django',
 
-    'products',
+    'fieles',
 ]
 
 MIDDLEWARE = [

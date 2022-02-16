@@ -1,4 +1,4 @@
-{% extends 'products/base.html' %}
+{% extends 'fieles/base.html' %}
 
 {% block content %}
     <h1 class="my-4">
@@ -15,7 +15,7 @@
     {% if object_list %}
         <div class="col-12" style="overflow-x: scroll">
             <table class="table">
-              <thead class=" nav-color">
+              <thead class="nav-color">
                 <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Description</th>
@@ -27,15 +27,15 @@
                 </tr>
               </thead>
               <tbody>
-                {% for product in object_list %}
+                {% for data in object_list %}
                 <tr>
-                    <td>{{ product.name }}</td>
-                    <td>{{ product.description }}</td>
-                    <td>{{ product.assText }}</td>
-                    <td>{{ product.price }}</td>
-                    <td>{{ product.date }}</td>
-                    <td><a href="{% url 'product_view' product.id %}"><button type="button" class="btn btn-outline-primary btn-sm">View</button></a></td>
-                    <td><a href="{% url 'product_delete' product.id %}"><button type="button" class="btn btn-outline-danger btn-sm">Delete</button></a></td>
+                    <td>{{ data.name }}</td>
+                    <td>{{ data.description }}</td>
+                    <td>{{ data.assText }}</td>
+                    <td>{{ data.price }}</td>
+                    <td>{{ data.date }}</td>
+                    <td><a href="{% url 'fieles_view' data.id %}"><button type="button" class="btn btn-outline-primary btn-sm">View</button></a></td>
+                    <td><a href="{% url 'fieles_delete' data.id %}"><button type="button" class="btn btn-outline-danger btn-sm">Delete</button></a></td>
                 </tr>
                 {% endfor %}
               </tbody>
@@ -44,7 +44,7 @@
     {% else %}
     <div class="col-12">
         <div class="alert alert-warning" role="alert">
-            There is no product, yet. But if you want, you can add from <a class="badge badge-info" href="{% url 'product_new' %}"><strong>here.</strong></a>
+            There is no product, yet. But if you want, you can add from <a class="badge badge-info" href="{% url 'fieles_new' %}"><strong>here.</strong></a>
         </div>
     </div>
     {% endif %}

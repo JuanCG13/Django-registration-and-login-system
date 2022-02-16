@@ -15,7 +15,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('', include('users.urls')),
-    path('products/', include('products.urls')),
+    path('fieles/', include('fieles.urls')),
 
     path('login/', CustomLoginView.as_view(redirect_authenticated_user=True, template_name='users/login.html',
                                            authentication_form=LoginForm), name='login'),
