@@ -9,6 +9,8 @@ class Fieles(models.Model):
     assText = models.TextField('Asstext', blank=True)
     price = models.DecimalField('Price', decimal_places=2, max_digits=8)
     date = models.DateField('Date',blank=True,default=datetime.datetime.now().date())
+
+    # updated data fields
     created = models.DateTimeField('Created', auto_now_add=True)
     changed = models.DateTimeField('Changed', auto_now=True)
 
@@ -19,4 +21,4 @@ class Fieles(models.Model):
         return self.name
         
     def get_absolute_url(self):
-        return reverse('product_edit', kwargs={'pk': self.pk})
+        return reverse('data_edit', kwargs={'pk': self.pk})
