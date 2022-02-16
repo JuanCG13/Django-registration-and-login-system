@@ -5,29 +5,29 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 
-from .models import Fieles 
+from .models import Fieles as model_data
 from .forms import *
 
 class DataList(ListView): 
-    model = Fieles
+    model = model_data
 
 class DataDetail(DetailView): 
-    model = Fieles
+    model = model_data
 
 class DataCreate(SuccessMessageMixin, CreateView): 
-    model = Fieles
+    model = model_data
     form_class = DataForm
     success_url = reverse_lazy('data_list')
     success_message = "Data successfully created!"
 
 class DataUpdate(SuccessMessageMixin, UpdateView): 
-    model = Fieles
+    model = model_data
     form_class = DataForm
     success_url = reverse_lazy('data_list')
     success_message = "Data successfully updated!"
 
 class DataDelete(SuccessMessageMixin, DeleteView):
-    model = Fieles
+    model = model_data
     success_url = reverse_lazy('data_list')
     success_message = "Data successfully deleted!"
 
