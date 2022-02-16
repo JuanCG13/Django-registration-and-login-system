@@ -30,7 +30,7 @@
                 <div class="navbar-nav ml-auto">
                   {% if user.is_authenticated %}
                     <a href="{% url 'users-profile' %}" class="nav-item nav-link">Profile</a>
-                    <a href="{% url 'fieles_list' %}" class="nav-item nav-link">Products</a>
+                    <a href="/fieles" class="nav-item nav-link">Fieles</a>
                     <a href="{% url 'logout' %}" class="nav-item nav-link">Logout</a>
                   {% else %}
                     <a href="{% url 'login' %}" class="nav-item nav-link">Sign in</a>
