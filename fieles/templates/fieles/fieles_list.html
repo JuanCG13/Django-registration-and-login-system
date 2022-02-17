@@ -13,6 +13,11 @@
     {% endif %}
     <div class="row">
     {% if object_list %}
+        <div class="col-4">
+            <input id="searchInput" type="text" class="form-control" placeholder="buscar...">
+        </div>
+        <br>
+        <br>
         <div class="col-12" style="overflow-x: scroll">
             <table class="table">
               <thead class="nav-color">
@@ -49,5 +54,39 @@
     </div>
     {% endif %}
     </div>
+
+    <script>
+        let searchInput = document.querySelector('#searchInput');
+        let dataTableValues = document.querySelectorAll('td');
+        let dataTable = document.querySelectorAll('tr');
+
+        console.log(searchInput);
+        console.log(dataTable[0].innerText);
+
+        searchInput.addEventListener('keyup',()=>{
+            dataTable.forEach((el,i)=>{
+
+                var elements = el.children
+                var contTrue = 0
+
+                if (i > 0) {
+                    
+                    for (let index = 0; index < elements.length - 2; index++) {
+                        const element = elements[index];
+
+                        if (element.innerText.toUpperCase().indexOf(searchInput.value.toUpperCase()) > -1) {
+                            contTrue++
+                        }
+                    }
+                    
+                    if(contTrue > 0){
+                        el.style.display = ''
+                    }else{
+                        el.style.display = 'none'
+                    }
+                }
+            })
+        })
+    </script>
 
 {% endblock %}
