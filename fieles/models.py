@@ -4,21 +4,28 @@ from django.urls import reverse
 import datetime
 
 class Fieles(models.Model):
-    name = models.CharField('Name', max_length=100)
-    description = models.TextField('Description', blank=True)
-    assText = models.TextField('Asstext', blank=True)
-    price = models.DecimalField('Price', decimal_places=2, max_digits=8)
-    date = models.DateField('Date',blank=True,default=datetime.datetime.now().date())
+    nombre = models.CharField('Name', max_length=100)
+    apellido = models.CharField('Apellido', max_length=100)
+    sexo = models.CharField('Sexo', max_length=100)
+    edad = models.CharField('Edad', max_length=100)
+    estado_civil = models.CharField('Estado Civil', max_length=100)
+    cedula = models.CharField('Cedula', max_length=100)
+    telefono = models.CharField('Telefono', max_length=100)
+    email = models.CharField('Email', max_length=100)
+    barrio = models.TextField('Barrio', blank=True)
+    referencia = models.TextField('Referencia', blank=True)
+    fecha = models.DateField('Fecha de Nacimiento',blank=True,default=datetime.datetime.now().date())
+    ciudad = models.CharField('Ciudad', max_length=100)
 
     # updated data fields
     created = models.DateTimeField('Created', auto_now_add=True)
     changed = models.DateTimeField('Changed', auto_now=True)
 
     class Meta:
-        ordering = ['name']
+        ordering = ['nombre']
 
     def __str__(self):
-        return self.name
+        return self.nombre
         
     def get_absolute_url(self):
         return reverse('data_edit', kwargs={'pk': self.pk})

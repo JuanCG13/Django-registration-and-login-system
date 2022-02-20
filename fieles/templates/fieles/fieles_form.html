@@ -2,7 +2,7 @@
 
 {% block content %}
     <h1 class="my-4">{% if request.path == '/fieles/new' %} Nuevo Registro {% else %} Editar - {% endif %}
-        {% if request.path != '/fieles/new' %}<small>{{ product.name }}</small>{% endif %}
+        {% if request.path != '/fieles/new' %}<small>{{ fieles.nombre }}</small>{% endif %}
     </h1>
     <div class="row">
         <div class="col-12">

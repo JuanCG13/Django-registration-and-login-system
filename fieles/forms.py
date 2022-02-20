@@ -8,28 +8,54 @@ class DateInput(forms.DateInput):
 
 class DataForm(forms.ModelForm):
 
-    input_choices = (('option 1', 'option 1'),('option 3', 'option 2'),('option 4', 'option 4'))
-    name = forms.ChoiceField(choices=input_choices)
+    sexo_choices = (('masculino', 'Masculino'),('femenino', 'Femenino'))
+    sexo = forms.ChoiceField(choices=sexo_choices)
+
+    estado_civil_choices = (('soltero', 'Soltero'),('casado', 'Casado/a'),('divorciado', 'Divorciado/a'),('viudo', 'Viudo/a'),('union_libre', 'Union Libre'))
+    estado_civil = forms.ChoiceField(choices=estado_civil_choices)
+
+    ciudad_choices = (('san_ignacio', 'San Ignacio'),('santa_rosa', 'Santa Rosa'),('san_juan', 'San Juan'),('ayolas', 'Ayolas'),('santa_maria', 'Santa Maria'))
+    ciudad = forms.ChoiceField(choices=ciudad_choices)
 
     def __init__(self, *args, **kwargs):
         super(DataForm, self).__init__(*args, **kwargs)
-        self.fields['name'].widget.attrs = {
+        self.fields['nombre'].widget.attrs = {
             'class': 'form-control col-md-6'
         }
-        self.fields['description'].widget.attrs = {
+        self.fields['apellido'].widget.attrs = {
             'class': 'form-control col-md-6'
         }
-        self.fields['assText'].widget.attrs = {
+        self.fields['sexo'].widget.attrs = {
             'class': 'form-control col-md-6',
         }
-        self.fields['date'].widget.attrs = {
+        self.fields['edad'].widget.attrs = {
             'class': 'form-control col-md-6',
         }
-        self.fields['price'].widget.attrs = {
+        self.fields['estado_civil'].widget.attrs = {
             'class': 'form-control col-md-6',
-            'step': 'any',
-            'min': '1',
         }
+        self.fields['cedula'].widget.attrs = {
+            'class': 'form-control col-md-6',
+        }
+        self.fields['telefono'].widget.attrs = {
+            'class': 'form-control col-md-6',
+        }
+        self.fields['email'].widget.attrs = {
+            'class': 'form-control col-md-6',
+        }
+        self.fields['barrio'].widget.attrs = {
+            'class': 'form-control col-md-6',
+        }
+        self.fields['referencia'].widget.attrs = {
+            'class': 'form-control col-md-6',
+        }
+        self.fields['fecha'].widget.attrs = {
+            'class': 'form-control col-md-6',
+        }
+        self.fields['ciudad'].widget.attrs = {
+            'class': 'form-control col-md-6',
+        }
+        
 
     class Meta:
 
@@ -38,5 +64,5 @@ class DataForm(forms.ModelForm):
         fields = "__all__"
 
         widgets = {
-            'date': DateInput(),
+            'fecha': DateInput(),
         }

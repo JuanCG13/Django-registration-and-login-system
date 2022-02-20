@@ -2,15 +2,23 @@
 
 {% block content %}
     <h1 class="my-4">Detalles -
-        <small>{{ object.name }}</small>
+        <small>{{ object.nombre }}</small>
     </h1>
     <div class="row">
         <div class="col-12">
             <ul class="list-group">
-              <li class="list-group-item"><strong>Name:</strong> {{ object.name }}</li>
-              <li class="list-group-item"><strong>Description:</strong> {{ object.description }}</li>
-              <li class="list-group-item"><strong>Asstext:</strong> {{ object.assText }}</li>
-              <li class="list-group-item"><strong>Price:</strong> {{ object.price }}</li>
+              <li class="list-group-item"><strong>Nombre:</strong> {{ object.nombre }}</li>
+              <li class="list-group-item"><strong>Apellido:</strong> {{ object.apellido }}</li>
+              <li class="list-group-item"><strong>Sexo:</strong> {{ object.sexo }}</li>
+              <li class="list-group-item"><strong>Edad:</strong> {{ object.edad }}</li>
+              <li class="list-group-item"><strong>Estado Civil:</strong> {{ object.estado_civil }}</li>
+              <li class="list-group-item"><strong>Cedula:</strong> {{ object.cedula }}</li>
+              <li class="list-group-item"><strong>Telefono:</strong> {{ object.telefono }}</li>
+              <li class="list-group-item"><strong>Email:</strong> {{ object.email }}</li>
+              <li class="list-group-item"><strong>Barrio:</strong> {{ object.barrio }}</li>
+              <li class="list-group-item"><strong>Referencia:</strong> {{ object.referencia }}</li>
+              <li class="list-group-item"><strong>Fecha:</strong> {{ object.fecha }}</li>
+              <li class="list-group-item"><strong>Ciudad:</strong> <span class="ciudad">{{ object.ciudad }}</span> </li>
             </ul>
         </div>
     </div>
@@ -21,4 +29,17 @@
                 <a href="{% url 'data_list' %}"><button type="button" class="btn btn-secondary">Atrás</button></a>
         </div>
     </div>
+
+    <script>
+
+        function capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+
+        let ciudad = document.querySelectorAll('.ciudad')
+
+        ciudad.forEach((el)=>{{
+            el.innerText = capitalizeFirstLetter(el.innerText.replaceAll('_',' '))
+        }})
+    </script>
 {% endblock %}

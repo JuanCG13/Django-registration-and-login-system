@@ -18,17 +18,17 @@ class DataCreate(SuccessMessageMixin, CreateView):
     model = model_data
     form_class = DataForm
     success_url = reverse_lazy('data_list')
-    success_message = "Data successfully created!"
+    success_message = "Registro creado correctamente!"
 
 class DataUpdate(SuccessMessageMixin, UpdateView): 
     model = model_data
     form_class = DataForm
     success_url = reverse_lazy('data_list')
-    success_message = "Data successfully updated!"
+    success_message = "Registro actualizado correctamente"
 
 class DataDelete(SuccessMessageMixin, DeleteView):
     model = model_data
     success_url = reverse_lazy('data_list')
-    success_message = "Data successfully deleted!"
+    success_message = "Registro eliminado correctamente!"
 
 
