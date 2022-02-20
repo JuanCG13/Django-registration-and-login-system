@@ -39,8 +39,8 @@
                     <td>{{ data.concepto }}</td>
                     <td>{{ data.monto }}</td>
                     <td>{{ data.fecha }}</td>
-                    <td><a href="{% url 'data_view' data.id %}"><button type="button" class="btn btn-outline-primary btn-sm">Ver</button></a></td>
-                    <td><a href="{% url 'data_delete' data.id %}"><button type="button" class="btn btn-outline-danger btn-sm">Eliminar</button></a></td>
+                    <td><a href="/gastos/view/{{data.id}}"><button type="button" class="btn btn-outline-primary btn-sm">Ver</button></a></td>
+                    <td><a href="/gastos/delete/{{data.id}}"><button type="button" class="btn btn-outline-danger btn-sm">Eliminar</button></a></td>
                 </tr>
                 {% endfor %}
               </tbody>
