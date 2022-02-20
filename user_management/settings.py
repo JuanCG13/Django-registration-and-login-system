@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'fieles',
     'gastos',
     'entrada',
+    'diezmo',
 ]
 
 MIDDLEWARE = [

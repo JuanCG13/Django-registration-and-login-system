@@ -2,25 +2,28 @@
 from django import forms
 
 from .models import *
+from ..fieles.models import *
 
 class DateInput(forms.DateInput):
     input_type = 'date'
 
 class DataForm(forms.ModelForm):
 
-    concepto_choices = (('servicio_central', 'Servicio Central'),('servicio_juvenil', 'Servicio Juvenil'),('casas_de_paz', 'Casas de Paz'))
-    concepto = forms.ChoiceField(choices=concepto_choices)
+    fiel_id = forms.ModelChoiceField(queryset=Fieles.objects.all(), to_field_name="name")
 
     def __init__(self, *args, **kwargs):
         super(DataForm, self).__init__(*args, **kwargs)
 
-        self.fields['concepto'].widget.attrs = {
-            'class': 'form-control col-md-6',
-        }
         self.fields['monto'].widget.attrs = {
             'class': 'form-control col-md-6',
         }
+        self.fields['fiel_id'].widget.attrs = {
+            'class': 'form-control col-md-6',
+        }
         self.fields['fecha'].widget.attrs = {
+            'class': 'form-control col-md-6',
+        }
+        self.fields['fecha_anio_mes'].widget.attrs = {
             'class': 'form-control col-md-6',
         }
         
@@ -33,4 +36,5 @@ class DataForm(forms.ModelForm):
 
         widgets = {
             'fecha': DateInput(),
+            'fecha_anio_mes': DateInput(),
         }

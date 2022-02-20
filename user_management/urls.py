@@ -19,6 +19,7 @@ urlpatterns = [
     path('fieles/', include('fieles.urls')),
     path('gastos/', include('gastos.urls')),
     path('entrada/', include('entrada.urls')),
+    path('diezmo/', include('diezmo.urls')),
 
 #     urls for apps
 

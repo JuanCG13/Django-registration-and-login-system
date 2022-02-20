@@ -25,6 +25,7 @@
                     <th scope="col">Concepto</th>
                     <th scope="col">Monto</th>
                     <th scope="col">Fecha</th>
+                    <th scope="col">Año-Mes Correspondiente</th>
                     <th scope="col">Ver</th>
                     <th scope="col">Eliminar</th>
                 </tr>
@@ -32,9 +33,9 @@
               <tbody>
                 {% for data in object_list %}
                 <tr>
-                    <td class="data-capitalize">{{ data.concepto }}</td>
                     <td>{{ data.monto }}</td>
                     <td>{{ data.fecha }}</td>
+                    <td>{{ data.fecha_anio_mes }}</td>
                     <td><a href="/diezmo/view/{{data.id}}"><button type="button" class="btn btn-outline-primary btn-sm">Ver</button></a></td>
                     <td><a href="/diezmo/delete/{{data.id}}"><button type="button" class="btn btn-outline-danger btn-sm">Eliminar</button></a></td>
                 </tr>
