@@ -1,0 +1,84 @@
+{% extends 'entrada/base.html' %}
+
+{% block content %}
+    <h1 class="my-4">
+        <small>Lista de Entrada</small>
+    </h1>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    <div class="row">
+    {% if object_list %}
+        <div class="col-4">
+            <input id="searchInput" type="text" class="form-control" placeholder="buscar...">
+        </div>
+        <br>
+        <br>
+        <div class="col-12" style="overflow-x: auto">
+            <table class="table">
+              <thead class="nav-color">
+                <tr>
+                    <th scope="col">Concepto</th>
+                    <th scope="col">Monto</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Ver</th>
+                    <th scope="col">Eliminar</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for data in object_list %}
+                <tr>
+                    <td>{{ data.concepto }}</td>
+                    <td>{{ data.monto }}</td>
+                    <td>{{ data.fecha }}</td>
+                    <td><a href="/entrada/view/{{data.id}}"><button type="button" class="btn btn-outline-primary btn-sm">Ver</button></a></td>
+                    <td><a href="/entrada/delete/{{data.id}}"><button type="button" class="btn btn-outline-danger btn-sm">Eliminar</button></a></td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        </div>
+    {% else %}
+    <div class="col-12">
+        <div class="alert alert-warning" role="alert">
+            No hay registros, todavía. Pero si quieres, puedes añadir desde <a class="badge badge-info" href="{% url 'data_new' %}"><strong>aquí.</strong></a>
+        </div>
+    </div>
+    {% endif %}
+    </div>
+
+    <script>
+        let searchInput = document.querySelector('#searchInput');
+        let dataTable = document.querySelectorAll('tr');
+
+        searchInput.addEventListener('keyup',()=>{
+            dataTable.forEach((el,i)=>{
+
+                var elements = el.children
+                var contTrue = 0
+
+                if (i > 0) {
+
+                    for (let index = 0; index < elements.length - 2; index++) {
+                        const element = elements[index];
+
+                        if (element.innerText.toUpperCase().indexOf(searchInput.value.toUpperCase()) > -1) {
+                            contTrue++
+                        }
+                    }
+                    
+                    if(contTrue > 0){
+                        el.style.display = ''
+                    }else{
+                        el.style.display = 'none'
+                    }
+                }
+            })
+        })
+    </script>
+
+{% endblock %}
