@@ -1,0 +1,24 @@
+{% extends 'gastos/base.html' %}
+
+{% block content %}
+    <h1 class="my-4">{% if request.path == '/gastos/new' %} Nuevo Registro {% else %} Editar - {% endif %}
+        {% if request.path != '/gastos/new' %}<small>{{ gastos.nombre }}</small>{% endif %}
+    </h1>
+    <div class="row">
+        <div class="col-12">
+            <form method="post">
+
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="form-group">
+                        {{ field.label_tag }}
+                        {{ field }}
+                    </div>
+                {% endfor %}
+
+                <input type="submit" {% if request.path == '/gastos/new' %} value="Guardar" {% else %} value="Actualizar" {% endif %} class="btn btn-success"/>
+                <a href="{% url 'data_list' %}"><button type="button" class="btn btn-secondary">Atrás</button></a>
+            </form>
+        </div>
+    </div>
+{% endblock %}

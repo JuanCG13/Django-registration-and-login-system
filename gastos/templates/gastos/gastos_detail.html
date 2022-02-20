@@ -1,0 +1,38 @@
+{% extends 'gastos/base.html' %}
+
+{% block content %}
+    <h1 class="my-4">Detalles -
+        <small>{{ object.nombre }}</small>
+    </h1>
+    <div class="row">
+        <div class="col-12">
+            <ul class="list-group">
+              <li class="list-group-item"><strong>Ruc o Cedula:</strong> {{ object.documento }}</li>
+              <li class="list-group-item"><strong>Nombre o Empresa:</strong> {{ object.nombre }}</li>
+              <li class="list-group-item"><strong>Concepto:</strong> <span class="data-capitalize">{{ object.concepto }}</span> </li>
+              <li class="list-group-item"><strong>Monto:</strong> {{ object.monto }}</li>
+              <li class="list-group-item"><strong>Fecha:</strong> {{ object.fecha }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row top-buffer">
+        <div class="col-12">
+                <a href="{% url 'data_edit' object.id %}"><button type="button" class="btn btn-success">Editar</button></a>
+                <a href="{% url 'data_list' %}"><button type="button" class="btn btn-secondary">Atrás</button></a>
+        </div>
+    </div>
+
+    <script>
+
+        function capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+
+        let dataCapitalize = document.querySelectorAll('.data-capitalize')
+
+        ciudad.forEach((el)=>{{
+            el.innerText = capitalizeFirstLetter(el.innerText)
+        }})
+    </script>
+{% endblock %}
