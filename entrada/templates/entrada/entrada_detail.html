@@ -2,7 +2,7 @@
 
 {% block content %}
     <h1 class="my-4">Detalles -
-        <small>{{ object.nombre }}</small>
+        <small class="data-capitalize">{{ object.concepto }}</small>
     </h1>
     <div class="row">
         <div class="col-12">
@@ -29,8 +29,8 @@
 
         let dataCapitalize = document.querySelectorAll('.data-capitalize')
 
-        ciudad.forEach((el)=>{{
-            el.innerText = capitalizeFirstLetter(el.innerText)
+        dataCapitalize.forEach((el)=>{{
+            el.innerText = capitalizeFirstLetter(el.innerText.replaceAll('_',' '))
         }})
     </script>
 {% endblock %}

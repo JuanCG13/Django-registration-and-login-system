@@ -32,7 +32,7 @@
               <tbody>
                 {% for data in object_list %}
                 <tr>
-                    <td>{{ data.concepto }}</td>
+                    <td class="data-capitalize">{{ data.concepto }}</td>
                     <td>{{ data.monto }}</td>
                     <td>{{ data.fecha }}</td>
                     <td><a href="/entrada/view/{{data.id}}"><button type="button" class="btn btn-outline-primary btn-sm">Ver</button></a></td>
@@ -79,6 +79,17 @@
                 }
             })
         })
+
+
+        function capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+
+        let dataCapitalize = document.querySelectorAll('.data-capitalize')
+
+        dataCapitalize.forEach((el)=>{{
+            el.innerText = capitalizeFirstLetter(el.innerText.replaceAll('_',' '))
+        }})
     </script>
 
 {% endblock %}
