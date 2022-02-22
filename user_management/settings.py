@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'gastos',
     'entrada',
     'diezmo',
+    'informes',
 ]
 
 MIDDLEWARE = [

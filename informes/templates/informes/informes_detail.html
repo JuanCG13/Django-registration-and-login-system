@@ -1,0 +1,53 @@
+{% extends 'informes/base.html' %}
+
+{% block content %}
+    <style>
+        .box{
+            background-color: #813966;
+            width: 80%;
+            height: 10rem;
+            margin: 2rem 0;
+            text-align: center;
+            box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.686);
+            border-radius: 8px;
+        }
+        .text-title-price{
+            line-height: 10rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        @media only screen and (max-width: 1200px){
+            /*Tablets [601px -> 1200px]*/
+            .text-title-price{
+                font-size: 5rem;
+            }
+        }
+        @media only screen and (max-width: 600px){
+            /*Big smartphones [426px -> 600px]*/
+            .text-title-price{
+                font-size: 3rem;
+            }
+        }
+        @media only screen and (max-width: 425px){
+            /*Small smartphones [325px -> 425px]*/
+            .text-title-price{
+                font-size: 1rem;
+            }
+        }
+    </style>
+
+    <h1 class="my-4 text-center">Informe de gastos
+    </h1>
+    <div class="row">
+        <div class="col-12 box">
+            <h1 class="text-title-price">INGRESO TOTAL: {{ ingreso_total }} GS.</h1>
+        </div>
+        <div class="col-12 box">
+            <h1 class="text-title-price">GASTO TOTAL: {{ gasto_total.monto__sum }} GS.</h1>
+        </div>
+        <div class="col-12 box">
+            <h1 class="text-title-price">INGRESO NETO: {{ ingreso_neto }} GS.</h1>
+        </div>
+    </div>
+{% endblock %}

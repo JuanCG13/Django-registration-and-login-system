@@ -20,6 +20,7 @@ urlpatterns = [
     path('gastos/', include('gastos.urls')),
     path('entrada/', include('entrada.urls')),
     path('diezmo/', include('diezmo.urls')),
+    path('informes/', include('informes.urls')),
 
 #     urls for apps
 
