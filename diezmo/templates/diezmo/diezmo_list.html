@@ -22,7 +22,7 @@
             <table class="table">
               <thead class="nav-color">
                 <tr>
-                    <th scope="col">Concepto</th>
+                    <th scope="col">Fiel</th>
                     <th scope="col">Monto</th>
                     <th scope="col">Fecha</th>
                     <th scope="col">Año-Mes Correspondiente</th>
@@ -33,6 +33,7 @@
               <tbody>
                 {% for data in object_list %}
                 <tr>
+                    <td>{{ data.fiel_id }}</td>
                     <td>{{ data.monto }}</td>
                     <td>{{ data.fecha }}</td>
                     <td>{{ data.fecha_anio_mes }}</td>

@@ -3,7 +3,6 @@ from django.db import models
 from django.urls import reverse
 import datetime
 
-from ..fieles.models import *
 
 class Diezmo(models.Model):
     monto = models.DecimalField('Monto', decimal_places=2, max_digits=8,blank=True)
@@ -16,14 +15,14 @@ class Diezmo(models.Model):
 
     # foreign key
 
-    fiel_id = models.ForeignKey('Fieles',on_delete=models.CASCADE,)
+    fiel_id = models.ForeignKey('fieles.Fieles',on_delete=models.CASCADE,null=True)
 
 
     class Meta:
         ordering = ['monto']
 
     def __str__(self):
-        return self.concepto + " - " + self.monto
+        return str(self.fiel_id) + ' ' + str(self.monto)
         
     def get_absolute_url(self):
         return reverse('data_edit', kwargs={'pk': self.pk})
