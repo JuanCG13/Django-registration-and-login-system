@@ -16,7 +16,7 @@ class Entrada(models.Model):
         ordering = ['concepto']
 
     def __str__(self):
-        return self.concepto + " - " + self.monto
+        return self.concepto + " - " + str(self.monto)
         
     def get_absolute_url(self):
         return reverse('entrada_edit', kwargs={'pk': self.pk})

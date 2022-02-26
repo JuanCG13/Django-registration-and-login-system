@@ -7,6 +7,7 @@ from django.urls import reverse_lazy
 
 from .models import Entrada as model_data
 from .forms import *
+from historial.models import *
 
 class DataList(ListView): 
     model = model_data
@@ -20,15 +21,49 @@ class DataCreate(SuccessMessageMixin, CreateView):
     success_url = reverse_lazy('entrada_list')
     success_message = "Registro creado correctamente!"
 
+    # code for log create model 
+    def form_valid(self, form):
+
+        current_user = self.request.user
+
+        save_historial = Historial(usuario="{}".format(current_user.username),accion="Se ha agregado una entrada")
+        save_historial.save()
+
+        return super().form_valid(form)
+
 class DataUpdate(SuccessMessageMixin, UpdateView): 
     model = model_data
     form_class = DataForm
     success_url = reverse_lazy('entrada_list')
     success_message = "Registro actualizado correctamente"
 
+    # code for log update model 
+    def form_valid(self, form):
+
+        current_user = self.request.user
+
+        save_historial = Historial(usuario="{}".format(current_user.username),accion="Se ha actualizado una entrada")
+        save_historial.save()
+
+        return super().form_valid(form)
+
 class DataDelete(SuccessMessageMixin, DeleteView):
     model = model_data
     success_url = reverse_lazy('entrada_list')
     success_message = "Registro eliminado correctamente!"
+
+    # code for log delete model 
+    def get_queryset(self):
+
+        query_set = super(DataDelete, self).get_queryset()
+
+        if self.request.method == 'POST':
+
+            current_user = self.request.user
+
+            save_historial = Historial(usuario="{}".format(current_user.username),accion="Se ha eliminado una entrada")
+            save_historial.save()
+
+        return query_set
 
 

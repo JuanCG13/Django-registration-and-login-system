@@ -10,6 +10,7 @@ from .forms import *
 
 class DataList(ListView): 
     model = model_data
+    # Historial.objects.all().delete()
 
 class DataDetail(DetailView): 
     model = model_data

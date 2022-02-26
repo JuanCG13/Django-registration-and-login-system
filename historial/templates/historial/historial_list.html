@@ -1,6 +1,14 @@
 {% extends 'historial/base.html' %}
 
 {% block content %}
+
+    <style>
+        .table-limit{
+            overflow-y:auto;
+            height: 15rem;
+        }
+    </style>
+
     <h1 class="my-4">
         <small>Lista de Historial</small>
     </h1>
@@ -18,7 +26,7 @@
         </div>
         <br>
         <br>
-        <div class="col-12" style="overflow-x: auto">
+        <div class="col-12 table-limit" style="overflow-x: auto">
             <table class="table">
               <thead class="nav-color">
                 <tr>
@@ -27,12 +35,12 @@
                     <th scope="col">Fecha</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody class="">
                 {% for data in object_list %}
                 <tr>
-                    <td class="data-capitalize">{{ data.usuario }}</td>
+                    <td>{{ data.usuario }}</td>
                     <td>{{ data.accion }}</td>
-                    <td>{{ data.fecha }}</td>
+                    <td>{{ data.created }}</td>
                 </tr>
                 {% endfor %}
               </tbody>
@@ -59,7 +67,7 @@
 
                 if (i > 0) {
 
-                    for (let index = 0; index < elements.length - 2; index++) {
+                    for (let index = 0; index < elements.length; index++) {
                         const element = elements[index];
 
                         if (element.innerText.toUpperCase().indexOf(searchInput.value.toUpperCase()) > -1) {
@@ -73,19 +81,9 @@
                         el.style.display = 'none'
                     }
                 }
+
             })
         })
-
-
-        function capitalizeFirstLetter(string) {
-            return string.charAt(0).toUpperCase() + string.slice(1);
-        }
-
-        let dataCapitalize = document.querySelectorAll('.data-capitalize')
-
-        dataCapitalize.forEach((el)=>{{
-            el.innerText = capitalizeFirstLetter(el.innerText.replaceAll('_',' '))
-        }})
     </script>
 
 {% endblock %}
