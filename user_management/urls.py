@@ -21,6 +21,7 @@ urlpatterns = [
     path('entrada/', include('entrada.urls')),
     path('diezmo/', include('diezmo.urls')),
     path('informes/', include('informes.urls')),
+    path('historial/', include('historial.urls')),
 
 #     urls for apps
 

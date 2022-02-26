@@ -4,19 +4,18 @@ from django.urls import reverse
 import datetime
 
 class Historial(models.Model):
-    concepto = models.CharField('Concepto', max_length=100,blank=True)
-    monto = models.DecimalField('Monto', decimal_places=2, max_digits=8,blank=True)
-    fecha = models.DateField('Fecha',blank=True,default=datetime.datetime.now().date())
+    usuario = models.CharField('Usuario', max_length=100,blank=True)
+    accion = models.CharField('Accion', max_length=100,blank=True)
 
     # updated data fields
     created = models.DateTimeField('Created', auto_now_add=True)
     changed = models.DateTimeField('Changed', auto_now=True)
 
     class Meta:
-        ordering = ['concepto']
+        ordering = ['usuario']
 
     def __str__(self):
-        return self.concepto + " - " + self.monto
+        return self.usuario + " - " + self.accion
         
     def get_absolute_url(self):
         return reverse('historial_edit', kwargs={'pk': self.pk})

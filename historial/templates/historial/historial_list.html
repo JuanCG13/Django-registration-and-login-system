@@ -22,21 +22,17 @@
             <table class="table">
               <thead class="nav-color">
                 <tr>
-                    <th scope="col">Concepto</th>
-                    <th scope="col">Monto</th>
+                    <th scope="col">Usuario</th>
+                    <th scope="col">Accion</th>
                     <th scope="col">Fecha</th>
-                    <th scope="col">Ver</th>
-                    <th scope="col">Eliminar</th>
                 </tr>
               </thead>
               <tbody>
                 {% for data in object_list %}
                 <tr>
-                    <td class="data-capitalize">{{ data.concepto }}</td>
-                    <td>{{ data.monto }}</td>
+                    <td class="data-capitalize">{{ data.usuario }}</td>
+                    <td>{{ data.accion }}</td>
                     <td>{{ data.fecha }}</td>
-                    <td><a href="/historial/view/{{data.id}}"><button type="button" class="btn btn-outline-primary btn-sm">Ver</button></a></td>
-                    <td><a href="/historial/delete/{{data.id}}"><button type="button" class="btn btn-outline-danger btn-sm">Eliminar</button></a></td>
                 </tr>
                 {% endfor %}
               </tbody>
@@ -45,7 +41,7 @@
     {% else %}
     <div class="col-12">
         <div class="alert alert-warning" role="alert">
-            No hay registros, todavía. Pero si quieres, puedes añadir desde <a class="badge badge-info" href="{% url 'historial_new' %}"><strong>aquí.</strong></a>
+            No hay registros, todavía... 
         </div>
     </div>
     {% endif %}
