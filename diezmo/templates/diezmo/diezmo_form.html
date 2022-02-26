@@ -2,7 +2,7 @@
 
 {% block content %}
     <h1 class="my-4">{% if request.path == '/diezmo/new' %} Nuevo Registro {% else %} Editar - {% endif %}
-        {% if request.path != '/diezmo/new' %}<small>{{ diezmo.nombre }}</small>{% endif %}
+        {% if request.path != '/diezmo/new' %}<small>{{ diezmo.fiel_id }}</small>{% endif %}
     </h1>
     <div class="row">
         <div class="col-12">

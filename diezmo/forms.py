@@ -10,7 +10,7 @@ class DateInput(forms.DateInput):
 
 class DataForm(forms.ModelForm):
 
-    fiel_id = forms.ModelChoiceField(queryset=Fieles.objects.all(), to_field_name="nombre")
+    fiel_id = forms.ModelChoiceField(queryset=Fieles.objects.all(), to_field_name="id")
 
     def __init__(self, *args, **kwargs):
         super(DataForm, self).__init__(*args, **kwargs)

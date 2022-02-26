@@ -21,4 +21,4 @@ class Gastos(models.Model):
         return self.nombre
         
     def get_absolute_url(self):
-        return reverse('data_edit', kwargs={'pk': self.pk})
+        return reverse('gastos_edit', kwargs={'pk': self.pk})

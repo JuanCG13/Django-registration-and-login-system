@@ -19,4 +19,4 @@ class Entrada(models.Model):
         return self.concepto + " - " + self.monto
         
     def get_absolute_url(self):
-        return reverse('data_edit', kwargs={'pk': self.pk})
+        return reverse('entrada_edit', kwargs={'pk': self.pk})
