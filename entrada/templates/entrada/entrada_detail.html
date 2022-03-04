@@ -1,22 +1,26 @@
 {% extends 'entrada/base.html' %}
 
 {% block content %}
-    <h1 class="my-4">Detalles -
-        <small class="data-capitalize">{{ object.concepto }}</small>
-    </h1>
-    <div class="row">
-        <div class="col-12">
-            <ul class="list-group">
-              <li class="list-group-item"><strong>Concepto:</strong> <span class="data-capitalize">{{ object.concepto }}</span> </li>
-              <li class="list-group-item"><strong>Monto:</strong> {{ object.monto }}</li>
-              <li class="list-group-item"><strong>Fecha:</strong> {{ object.fecha }}</li>
-            </ul>
+    <div class="print-pdf-info">
+        <h1 class="my-4">Detalles -
+            <small class="data-capitalize">{{ object.concepto }}</small>
+        </h1>
+        <div class="row">
+            <div class="col-12">
+                <ul class="list-group">
+                <li class="list-group-item"><strong>Concepto:</strong> <span class="data-capitalize">{{ object.concepto }}</span> </li>
+                <li class="list-group-item"><strong>Monto:</strong> {{ object.monto }}</li>
+                <li class="list-group-item"><strong>Fecha:</strong> {{ object.fecha }}</li>
+                </ul>
+            </div>
         </div>
+
     </div>
 
     <div class="row top-buffer">
         <div class="col-12">
                 <a href="/entrada/edit/{{object.id}}"><button type="button" class="btn btn-success">Editar</button></a>
+                <a href="#"><button type="button" class="btn btn-warning" id="jsPDF" style="color:white;">Imprimir</button></a>
                 <a href="/entrada"><button type="button" class="btn btn-secondary">Atrás</button></a>
         </div>
     </div>
@@ -32,5 +36,25 @@
         dataCapitalize.forEach((el)=>{{
             el.innerText = capitalizeFirstLetter(el.innerText.replaceAll('_',' '))
         }})
+
+        // print pdf
+
+        function downloadPDFWithjsPDF() {
+
+            let doc = new jspdf.jsPDF('p', 'pt', 'a4');
+            let date = new Date();
+            let dateFormat = `entrada_${date.getDay()}_${date.getDate()}_${date.getFullYear()}`
+
+            doc.html(document.querySelector('.print-pdf-info'), {
+                callback: function (doc) {
+                doc.save(`${dateFormat}.pdf`);
+                },
+                // margin: [60, 60, 60, 60],
+                // x: 32,
+                y: 32,
+            });
+        }
+
+        document.querySelector('#jsPDF').addEventListener('click', downloadPDFWithjsPDF);
     </script>
 {% endblock %}

@@ -60,7 +60,12 @@
                     <a href="/gastos" class="nav-item nav-link">Gastos</a>
                     <a href="/entrada" class="nav-item nav-link">Entrada</a>
                     <a href="/diezmo" class="nav-item nav-link">Diezmo</a>
-                    <a href="/informes" class="nav-item nav-link">Informes</a>
+                    
+                    {% if user.is_superuser %}
+                      <a href="/informes" class="nav-item nav-link">Informes</a>
+                      
+                    {% endif %}
+                      
                     <a href="/historial" class="nav-item nav-link">Historial</a>
                     <a href="{% url 'logout' %}" class="nav-item nav-link">Cerrar Sesión</a>
                   {% else %}

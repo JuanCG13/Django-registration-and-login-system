@@ -5,7 +5,7 @@ import datetime
 
 
 class Diezmo(models.Model):
-    monto = models.DecimalField('Monto', decimal_places=2, max_digits=8,blank=True)
+    monto = models.DecimalField('Monto', decimal_places=2, max_digits=128,blank=True)
     fecha = models.DateField('Fecha',blank=True,default=datetime.datetime.now().date())
     fecha_anio_mes = models.DateField('Año-Mes Correspondiente',blank=True,default=datetime.datetime.now().date())
 

@@ -5,7 +5,7 @@ import datetime
 
 class Entrada(models.Model):
     concepto = models.CharField('Concepto', max_length=100,blank=True)
-    monto = models.DecimalField('Monto', decimal_places=2, max_digits=8,blank=True)
+    monto = models.DecimalField('Monto', decimal_places=2, max_digits=128,blank=True)
     fecha = models.DateField('Fecha',blank=True,default=datetime.datetime.now().date())
 
     # updated data fields
