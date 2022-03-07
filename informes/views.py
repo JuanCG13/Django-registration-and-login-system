@@ -16,18 +16,33 @@ from diezmo.models import *
 
 @login_required
 def informes_view(request):
-    gasto_total = Gastos.objects.aggregate(Sum('monto'))
-    entrada_total = Entrada.objects.aggregate(Sum('monto'))
-    diezmo_total = Diezmo.objects.aggregate(Sum('monto'))
 
-    ingreso_total = entrada_total['monto__sum'] + diezmo_total['monto__sum']
-    ingreso_neto = ingreso_total - gasto_total['monto__sum']
+    gasto_total = Gastos.objects.aggregate(Sum('monto'))
+    gasto_total = gasto_total['monto__sum']
+
+    if not gasto_total:
+        gasto_total = 0
+
+    entrada_total = Entrada.objects.aggregate(Sum('monto'))
+    entrada_total = entrada_total['monto__sum']
+
+    if not entrada_total:
+        entrada_total = 0
+
+    diezmo_total = Diezmo.objects.aggregate(Sum('monto'))
+    diezmo_total = diezmo_total['monto__sum']
+
+    if not diezmo_total:
+        diezmo_total = 0
+
+    ingreso_total = entrada_total + diezmo_total
+    ingreso_neto = ingreso_total - gasto_total
 
     # print(entrada_total['monto__sum'])
     # print(diezmo_total['monto__sum'])
     # print(gasto_total['monto__sum'])
-    print(ingreso_total)
-    print(ingreso_neto)
+    # print(ingreso_total)
+    # print(ingreso_neto)
     return render(request,'informes/informes_detail.html',{
         'ingreso_total':ingreso_total,
         'gasto_total':gasto_total,
