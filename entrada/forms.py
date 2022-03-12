@@ -17,6 +17,9 @@ class DataForm(forms.ModelForm):
         self.fields['concepto'].widget.attrs = {
             'class': 'form-control col-md-6',
         }
+        self.fields['origen'].widget.attrs = {
+            'class': 'form-control col-md-6',
+        }
         self.fields['monto'].widget.attrs = {
             'class': 'form-control col-md-6',
         }

@@ -23,6 +23,7 @@
               <thead class="nav-color">
                 <tr>
                     <th scope="col">Concepto</th>
+                    <th scope="col">Origen</th>
                     <th scope="col">Monto</th>
                     <th scope="col">Fecha</th>
                     <th scope="col">Ver</th>
@@ -33,6 +34,7 @@
                 {% for data in object_list %}
                 <tr>
                     <td class="data-capitalize">{{ data.concepto }}</td>
+                    <td class="data-capitalize">{{ data.origen }}</td>
                     <td>{{ data.monto }}</td>
                     <td>{{ data.fecha }}</td>
                     <td><a href="/entrada/view/{{data.id}}"><button type="button" class="btn btn-outline-primary btn-sm">Ver</button></a></td>
